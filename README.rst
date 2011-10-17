@@ -25,9 +25,11 @@ codepadr requires:
 Example usage
 -------------
 
-Code can be piped in, passed as a file, or typed in stdin. Examples::
+codepadr is quite flexible in how you pass it code to upload::
 
+    $ codepad file.txt
     $ codepad < file.txt
+    $ cat file.txt | codepad
 
 You can specify that the paste should be private::
 
