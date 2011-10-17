@@ -5,10 +5,13 @@
 # Department of Physics
 # UC Davis
 #
-# codepad/cli.py
+# codepadr/cli.py
 
 """
+codepadr
+========
 
+codepadr uploads pastes to codepad.org.
 """
 
 import sys
@@ -37,7 +40,7 @@ DEFAULT_TYPE = FILE_TYPES['txt']
 
 def get_args():
     """
-
+    Define & grab the arguments using argparse.
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--lang', dest='lang', help="Set the language of the paste. The option is only relavent for pastes input on stdin.", choices=FILE_TYPES.keys(), default='txt')
@@ -48,7 +51,22 @@ def get_args():
 
 def upload_paste(code="", lang="Plain Text", private=False, run=False):
     """
+    Upload code to codepad.org, setting the appropriate flags.
 
+    Arguments
+    ---------
+    code: string
+        The body of the paste.
+
+    lang: string
+        The language of the paste. Used for syntax highlighting and when running
+        the code.
+
+    private: bool
+        Whether the paste should be private or not.
+
+    run: bool
+        Whether the paste should be executed or not.
     """
     data = {'code': code,
             'lang': lang,
@@ -63,7 +81,15 @@ def upload_paste(code="", lang="Plain Text", private=False, run=False):
 
 def process_file(source, args):
     """
+    Process a data source (file or stdin) before uploading it.
 
+    Arguments
+    ---------
+    source: string, stdin
+        Either a file name or stdin. The source of the body of the paste.
+
+    args: ArgumentParser
+        argparse's parsed arguments, or a similar objected.
     """
     if source is sys.stdin:
         content = source.read()
@@ -81,7 +107,7 @@ def process_file(source, args):
 
 def main():
     """
-
+    Reads in the arguments and dispatches to process_file.
     """
     args = get_args()
     if args.code and args.code != ['-']:
