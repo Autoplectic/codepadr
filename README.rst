@@ -28,8 +28,11 @@ Example usage
 codepadr is quite flexible in how you pass it code to upload::
 
     $ codepad file.txt
+    http://codepad.org/j1Eyip9S
     $ codepad < file.txt
+    http://codepad.org/pHifs6eH
     $ cat file.txt | codepad
+    http://codepad.org/MHVbBBUk
 
 You can specify that the paste should be private::
 
